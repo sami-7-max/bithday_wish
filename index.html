@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Momina 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #ffdde1, #ee9ca7);
+      overflow-x: hidden;
+      color: white;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      font-size: 2rem;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 30px #ff69b4; }
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .options button {
+      background: #fff;
+      color: #ff69b4;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    .options button:hover {
+      transform: scale(1.1);
+    }
+    .content {
+      padding: 2rem;
+      text-align: center;
+      display: none;
+    }
+    .heart, .rose {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      animation: fall 5s linear infinite;
+    }
+    .heart {
+      background: pink;
+      clip-path: path('M10 30 C -10 10, 20 -10, 10 10 C 0 -10, 30 10, 10 30 Z');
+    }
+    .rose {
+      background-image: url('https://i.ibb.co/ZVPZ7j7/rose.png');
+      background-size: cover;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10vh); }
+      100% { transform: translateY(110vh); }
+    }
+    .music-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: #ff69b4;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .hidden { display: none; }
+    .typing {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+    form textarea {
+      width: 90%;
+      padding: 1rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    form input[type="submit"] {
+      padding: 1rem 2rem;
+      background: white;
+      color: #ff69b4;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>🎉 Happy Birthday, Momina! 🎂</header>
+
+  <div class="music-control" onclick="toggleMusic()">🎵</div>
+  <audio id="bg-music" loop autoplay>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3" />
+  </audio>
+
+  <div class="content" style="display: block;">
+    <p style="font-size: 1.3rem; text-align: center; margin: 2rem;">I wasn't near you, so I thought of this little nice gift for you 💝</p>
+  </div>
+
+  <div class="options">
+    <button onclick="showSection('wish')">💌 Read Your Wish</button>
+    <button onclick="showSection('game')">🎯 Play a Game</button>
+    <button onclick="showSection('animation')">🎁 Watch Animation</button>
+    <button onclick="showSection('questions')">💘 Answer Questions</button>
+  </div>
+
+  <div class="content" id="wish">
+    <h2>Dear Momina 💖</h2>
+    <p class="typing"></p>
+    <script>
+      const message = "Tum meri zindagi, mera sukoon, mera sab kuch ho. I can't wait to get married to you. Meri intehaayad, meri duniya, mera pyaara sa bacha. I love you so muchhhhhhhhhhhhhhhhh 💕";
+      let i = 0;
+      const typeTarget = document.querySelector(".typing");
+      function type() {
+        if (i < message.length) {
+          typeTarget.innerHTML += message.charAt(i);
+          i++;
+          setTimeout(type, 50);
+        }
+      }
+      type();
+    </script>
+  </div>
+
+  <div class="content" id="game">
+    <h2>💘 Catch the Heart!</h2>
+    <p>Click the heart to score!</p>
+    <div onclick="alert('💖 You caught my heart!')" style="font-size: 3rem; cursor: pointer;">💖</div>
+  </div>
+
+  <div class="content" id="animation">
+    <h2>🎁 A Surprise Gift for You</h2>
+    <p>✨ Imagine this space filled with sparkles and magic ✨</p>
+  </div>
+
+  <div class="content" id="questions">
+    <h2>💌 Answer These Romantic Questions</h2>
+    <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+      <textarea name="q1" placeholder="What do you love the most in me?"></textarea>
+      <textarea name="q2" placeholder="What was your first thought after seeing me?"></textarea>
+      <textarea name="q3" placeholder="Are you ready to marry me?"></textarea>
+      <textarea name="q4" placeholder="Do you actually love me?"></textarea>
+      <textarea name="q5" placeholder="Will you live with me till the end?"></textarea>
+      <input type="submit" value="Send Answers 💌">
+    </form>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.content').forEach(div => div.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function toggleMusic() {
+      const music = document.getElementById('bg-music');
+      if (music.paused) music.play();
+      else music.pause();
+    }
+
+    function createFalling(type) {
+      let el = document.createElement('div');
+      el.className = type;
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = (3 + Math.random() * 5) + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 8000);
+    }
+    setInterval(() => {
+      createFalling('heart');
+      createFalling('rose');
+    }, 1500);
+  </script>
+</body>
+</html>
