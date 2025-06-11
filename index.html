@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Momina 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(120deg, #ffdde1, #ee9ca7);
+      background: #0a0a0a;
       overflow-x: hidden;
-      color: white;
+      color: #fff;
     }
     header {
       text-align: center;
-      padding: 2rem;
-      font-size: 2rem;
-      animation: glow 2s infinite alternate;
+      padding: 2rem 1rem;
+      font-size: 2.5rem;
+      font-family: 'Great Vibes', cursive;
+      color: #ffd700;
+      animation: glow 2s ease-in-out infinite alternate;
     }
     @keyframes glow {
       from { text-shadow: 0 0 10px #fff; }
-      to { text-shadow: 0 0 30px #ff69b4; }
+      to { text-shadow: 0 0 30px #ff1493; }
     }
     .options {
       display: flex;
@@ -31,13 +34,12 @@
     }
     .options button {
       background: #fff;
-      color: #ff69b4;
+      color: #ff1493;
       border: none;
       padding: 1rem 2rem;
       font-size: 1.2rem;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s;
     }
     .options button:hover {
@@ -48,51 +50,55 @@
       text-align: center;
       display: none;
     }
-    .heart, .rose {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      animation: fall 5s linear infinite;
+    .visible {
+      display: block;
     }
-    .heart {
-      background: pink;
-      clip-path: path('M10 30 C -10 10, 20 -10, 10 10 C 0 -10, 30 10, 10 30 Z');
+    .typing {
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      white-space: pre-line;
     }
     .rose {
-      background-image: url('https://i.ibb.co/ZVPZ7j7/rose.png');
-      background-size: cover;
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      background: url('https://i.imgur.com/LpF9Yzr.png') no-repeat center center / contain;
+      animation: fall 10s linear infinite;
+      top: -50px;
+      pointer-events: none;
     }
     @keyframes fall {
-      0% { transform: translateY(-10vh); }
-      100% { transform: translateY(110vh); }
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
     }
-    .music-control {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: white;
-      color: #ff69b4;
-      padding: 10px;
-      border-radius: 50%;
+    .gift-box {
+      font-size: 3rem;
       cursor: pointer;
-    }
-    .hidden { display: none; }
-    .typing {
-      font-size: 1.5rem;
       margin-top: 2rem;
     }
+    .firework {
+      position: absolute;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      background: pink;
+      animation: explode 1s ease-out forwards;
+    }
+    @keyframes explode {
+      to { transform: scale(10); opacity: 0; }
+    }
     form textarea {
-      width: 90%;
+      width: 80%;
       padding: 1rem;
+      margin-bottom: 1rem;
       border-radius: 10px;
       border: none;
       font-size: 1rem;
-      margin-bottom: 1rem;
     }
     form input[type="submit"] {
       padding: 1rem 2rem;
       background: white;
-      color: #ff69b4;
+      color: #ff1493;
       border: none;
       border-radius: 30px;
       font-size: 1rem;
@@ -101,55 +107,39 @@
   </style>
 </head>
 <body>
-  <header>🎉 Happy Birthday, Momina! 🎂</header>
-
-  <div class="music-control" onclick="toggleMusic()">🎵</div>
-  <audio id="bg-music" loop autoplay>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3" />
+  <audio id="bg-music" autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthdaySong.mp3" type="audio/mp3">
   </audio>
 
-  <div class="content" style="display: block;">
-    <p style="font-size: 1.3rem; text-align: center; margin: 2rem;">I wasn't near you, so I thought of this little nice gift for you 💝</p>
-  </div>
-
+  <header>🎂 Happy Birthday, Momina! 🎉</header>
   <div class="options">
     <button onclick="showSection('wish')">💌 Read Your Wish</button>
-    <button onclick="showSection('game')">🎯 Play a Game</button>
-    <button onclick="showSection('animation')">🎁 Watch Animation</button>
-    <button onclick="showSection('questions')">💘 Answer Questions</button>
+    <button onclick="showSection('writewish')">✍️ Write Your Own Wish</button>
+    <button onclick="showSection('game1')">🎯 Score Game</button>
+    <button onclick="showSection('game2')">🧠 Romantic Questions</button>
+    <button onclick="showSection('gift')">🎁 Surprise Gift</button>
   </div>
 
   <div class="content" id="wish">
-    <h2>Dear Momina 💖</h2>
     <p class="typing"></p>
-    <script>
-      const message = "Tum meri zindagi, mera sukoon, mera sab kuch ho. I can't wait to get married to you. Meri intehaayad, meri duniya, mera pyaara sa bacha. I love you so muchhhhhhhhhhhhhhhhh 💕";
-      let i = 0;
-      const typeTarget = document.querySelector(".typing");
-      function type() {
-        if (i < message.length) {
-          typeTarget.innerHTML += message.charAt(i);
-          i++;
-          setTimeout(type, 50);
-        }
-      }
-      type();
-    </script>
   </div>
 
-  <div class="content" id="game">
-    <h2>💘 Catch the Heart!</h2>
-    <p>Click the heart to score!</p>
-    <div onclick="alert('💖 You caught my heart!')" style="font-size: 3rem; cursor: pointer;">💖</div>
+  <div class="content" id="writewish">
+    <h2>✍️ Write your own wish for me!</h2>
+    <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+      <textarea name="wish" placeholder="Type your heartfelt message here..."></textarea>
+      <input type="submit" value="Send Wish 💌">
+    </form>
   </div>
 
-  <div class="content" id="animation">
-    <h2>🎁 A Surprise Gift for You</h2>
-    <p>✨ Imagine this space filled with sparkles and magic ✨</p>
+  <div class="content" id="game1">
+    <h2>🎯 Score Game</h2>
+    <button onclick="increaseScore()">💘 Tap to Score</button>
+    <p>Your Score: <span id="score">0</span></p>
   </div>
 
-  <div class="content" id="questions">
-    <h2>💌 Answer These Romantic Questions</h2>
+  <div class="content" id="game2">
+    <h2>💬 Romantic Questions</h2>
     <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
       <textarea name="q1" placeholder="What do you love the most in me?"></textarea>
       <textarea name="q2" placeholder="What was your first thought after seeing me?"></textarea>
@@ -160,30 +150,57 @@
     </form>
   </div>
 
+  <div class="content" id="gift">
+    <h2>🎁 Click the Gift!</h2>
+    <div class="gift-box" onclick="revealGift()">🎁</div>
+    <p id="gift-text"></p>
+  </div>
+
   <script>
+    const fullMessage = "Tum meri zindagi, mera sukoon, mera sab kuch ho. I can't wait to get married to you. Meri intahaayat, meri duniya, mera pyaara sa bacha. I love you so muchhhhhhhhhhhhhhhhh 💕.seriously i cant wait to get married to you mera bachaaaa.happy birthday meri jaaan ALLAH tmhain hazar khushiyan dy my you live a long and a happy life meri jaaan";
+    const typingElem = document.querySelector(".typing");
+    let index = 0;
+    function typeWish() {
+      if (index < fullMessage.length) {
+        typingElem.innerHTML += fullMessage.charAt(index);
+        index++;
+        setTimeout(typeWish, 50);
+      }
+    }
+
     function showSection(id) {
-      document.querySelectorAll('.content').forEach(div => div.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
+      document.querySelectorAll('.content').forEach(div => div.classList.remove('visible'));
+      document.getElementById(id).classList.add('visible');
+      if (id === 'wish') typeWish();
     }
 
-    function toggleMusic() {
-      const music = document.getElementById('bg-music');
-      if (music.paused) music.play();
-      else music.pause();
+    let score = 0;
+    function increaseScore() {
+      score++;
+      document.getElementById('score').textContent = score;
     }
 
-    function createFalling(type) {
-      let el = document.createElement('div');
-      el.className = type;
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.animationDuration = (3 + Math.random() * 5) + 's';
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 8000);
+    function revealGift() {
+      document.getElementById('gift-text').innerText = "🌟 Surprise! Your gift is my forever love, my loyalty, and my heart. 🎁❤️";
     }
+
+    document.addEventListener('click', function(e) {
+      const fw = document.createElement('div');
+      fw.className = 'firework';
+      fw.style.left = `${e.pageX}px`;
+      fw.style.top = `${e.pageY}px`;
+      document.body.appendChild(fw);
+      setTimeout(() => fw.remove(), 1000);
+    });
+
+    // Rose Petal animation
     setInterval(() => {
-      createFalling('heart');
-      createFalling('rose');
-    }, 1500);
+      const rose = document.createElement('div');
+      rose.className = 'rose';
+      rose.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(rose);
+      setTimeout(() => rose.remove(), 10000);
+    }, 500);
   </script>
 </body>
 </html>
