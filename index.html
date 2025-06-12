@@ -61,11 +61,11 @@
     }
     .rose {
       position: fixed;
-      width: 60px;
-      height: 60px;
-      background: url('https://pngimg.com/uploads/rose/rose_PNG659.png') no-repeat center center / contain;
+      width: 100px;
+      height: 100px;
+      background: url('https://i.imgur.com/ZF6s192.png') no-repeat center center / contain;
       animation: fall 10s linear;
-      top: -60px;
+      top: -100px;
       pointer-events: none;
       z-index: 100;
     }
@@ -103,6 +103,10 @@
       height: 100%;
       pointer-events: none;
       z-index: 999;
+    }
+    #gift-img {
+      margin-top: 1rem;
+      width: 200px;
     }
   </style>
 </head>
@@ -147,6 +151,7 @@
     <h2>🏱 Click the Gift!</h2>
     <div class="gift-box" onclick="revealGift()">🏱</div>
     <p id="gift-text"></p>
+    <img id="gift-img" src="https://i.imgur.com/ab3lSvm.png" alt="Red Rose Bouquet" style="display:none" />
   </div>
 
   <div id="fireworks-container"></div>
@@ -167,7 +172,6 @@
       const audio = document.getElementById('bg-music');
       audio.volume = 1;
       audio.play();
-
       for (let i = 0; i < 20; i++) {
         const rose = document.createElement('div');
         rose.className = 'rose';
@@ -175,7 +179,6 @@
         document.body.appendChild(rose);
         setTimeout(() => rose.remove(), 10000);
       }
-
       setTimeout(() => showSection(targetId), 2000);
     }
 
@@ -197,14 +200,17 @@
 
     function revealGift() {
       document.getElementById('gift-text').innerText = "🌟 Surprise! Your gift is my forever love, my loyalty, and my heart. 🏱❤️";
+      document.getElementById('gift-img').style.display = 'block';
     }
 
     let fireworksInstance = null;
     function startFireworks() {
-      if (fireworksInstance) return;
       const container = document.getElementById('fireworks-container');
+      if (!container) return;
+      if (fireworksInstance) return;
+
       fireworksInstance = new Fireworks.default(container, {
-        rocketsPoint: { min: 20, max: 80 },
+        rocketsPoint: 50,
         hue: { min: 0, max: 360 },
         delay: { min: 15, max: 30 },
         speed: 2,
@@ -218,14 +224,18 @@
         brightness: { min: 50, max: 80 },
         sound: {
           enabled: true,
-          files: ["https://www.fesliyanstudios.com/play-mp3/387"],
+          files: ['https://www.fesliyanstudios.com/play-mp3/387'],
           volume: 1
         }
       });
+
       fireworksInstance.start();
+
       setTimeout(() => {
-        fireworksInstance.stop();
-        fireworksInstance = null;
+        if (fireworksInstance) {
+          fireworksInstance.stop();
+          fireworksInstance = null;
+        }
       }, 10000);
     }
   </script>
