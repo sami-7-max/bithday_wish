@@ -63,7 +63,7 @@
       position: fixed;
       width: 60px;
       height: 60px;
-      background: url('https://i.imgur.com/yb6nQhY.png') no-repeat center center / contain;
+      background: url('https://pngimg.com/uploads/rose/rose_PNG659.png') no-repeat center center / contain;
       animation: fall 10s linear;
       top: -60px;
       pointer-events: none;
@@ -165,7 +165,7 @@
 
     function playTransition(targetId) {
       const audio = document.getElementById('bg-music');
-      audio.volume = 1.0;
+      audio.volume = 1;
       audio.play();
 
       for (let i = 0; i < 20; i++) {
@@ -175,6 +175,7 @@
         document.body.appendChild(rose);
         setTimeout(() => rose.remove(), 10000);
       }
+
       setTimeout(() => showSection(targetId), 2000);
     }
 
@@ -218,7 +219,7 @@
         sound: {
           enabled: true,
           files: ["https://www.fesliyanstudios.com/play-mp3/387"],
-          volume: 1.0
+          volume: 1
         }
       });
       fireworksInstance.start();
