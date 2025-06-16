@@ -11,30 +11,18 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      height: 100vh;
       overflow-x: hidden;
       color: #fff;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: transparent url('https://i.ibb.co/tp08prn/stars.gif') repeat;
-      z-index: 0;
-      pointer-events: none;
+      position: relative;
     }
 
     header {
       text-align: center;
       padding: 2rem 1rem;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-family: 'Great Vibes', cursive;
       color: #ffd700;
       animation: glow 2s ease-in-out infinite alternate;
-      z-index: 1;
-      position: relative;
     }
 
     @keyframes glow {
@@ -48,8 +36,6 @@
       align-items: center;
       gap: 1rem;
       margin-top: 2rem;
-      z-index: 1;
-      position: relative;
     }
 
     .options button {
@@ -60,28 +46,28 @@
       font-size: 1.2rem;
       border-radius: 30px;
       cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
+      transition: transform 0.3s;
     }
 
     .options button:hover {
       transform: scale(1.1);
-      background: #ff1493;
-      color: #fff;
+      box-shadow: 0 0 15px pink;
     }
 
     .content {
       padding: 2rem;
       text-align: center;
       display: none;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      z-index: 1;
-      position: relative;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .visible {
       display: block;
-      opacity: 1;
     }
 
     .typing {
@@ -92,18 +78,18 @@
 
     .rose {
       position: fixed;
-      width: 100px;
-      height: 100px;
-      background: url('https://i.imgur.com/ZF6s192.png') no-repeat center center / contain;
-      animation: fall 10s linear;
+      width: 60px;
+      height: 60px;
+      background: url('https://i.ibb.co/QJdLqZg/redrose.png') no-repeat center center / contain;
+      animation: fall 8s linear;
       top: -100px;
       pointer-events: none;
-      z-index: 100;
+      z-index: 999;
     }
 
     @keyframes fall {
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
 
     .gift-box {
@@ -138,41 +124,18 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 999;
+      z-index: 1000;
     }
 
     #gift-img {
       margin-top: 1rem;
       width: 200px;
     }
-
-    /* Heart Sparkles */
-    .heart {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      background: url('https://i.imgur.com/1s7QbEX.png') no-repeat center/contain;
-      animation: floatUp 6s linear infinite;
-      pointer-events: none;
-      z-index: 999;
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(0.5);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) scale(1.2);
-        opacity: 0;
-      }
-    }
   </style>
 </head>
 <body>
-
-<audio id="bg-music" autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/12/06/audio_196fb1da78.mp3" type="audio/mp3">
+<audio id="bg-music" loop>
+  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthdaySong.mp3" type="audio/mp3">
 </audio>
 
 <header>🎂 Happy Birthday, Momina! 🎉</header>
@@ -181,7 +144,7 @@
   <button onclick="playTransition('wish')">💌 Read Your Wish</button>
   <button onclick="playTransition('game1')">🎯 Score Game</button>
   <button onclick="playTransition('game2')">🧠 Romantic Questions</button>
-  <button onclick="playTransition('gift')">🏱 Surprise Gift</button>
+  <button onclick="playTransition('gift')">🎁 Surprise Gift</button>
   <button onclick="startFireworks()">🎆 Fireworks</button>
 </div>
 
@@ -197,8 +160,7 @@
 
 <div class="content" id="game2">
   <h2>💬 Romantic Questions</h2>
- <form action="https://formsubmit.co/mirzaze0786@gmail.com" method="POST">
-
+  <form action="https://formsubmit.co/mirzaze0786@gmail.com" method="POST">
     <textarea name="q1" placeholder="What do you love the most in me?"></textarea>
     <textarea name="q2" placeholder="What was your first thought after seeing me?"></textarea>
     <textarea name="q3" placeholder="Are you ready to marry me?"></textarea>
@@ -209,114 +171,103 @@
 </div>
 
 <div class="content" id="gift">
-  <h2>🏱 Click the Gift!</h2>
-  <div class="gift-box" onclick="revealGift()">🏱</div>
+  <h2>🎁 Click the Gift!</h2>
+  <div class="gift-box" onclick="revealGift()">🎁</div>
   <p id="gift-text"></p>
-  <img id="gift-img" src="https://i.imgur.com/ab3lSvm.png" alt="Red Rose Bouquet" style="display:none" />
+  <img id="gift-img" src="https://i.imgur.com/ab3lSvm.png" alt="Red Rose Bouquet" style="display:none"/>
 </div>
 
 <div id="fireworks-container"></div>
 
 <script>
-  const fullMessage = "Tum meri zindagi, mera sukoon, mera sab kuch ho. I can't wait to get married to you. Meri intahaayat, meri duniya, mera pyaara sa bacha. I love you so muchhhhhhhhhhhhhhhhh 💕. Seriously I can't wait to get married to you mera bachaaaa. Happy birthday meri jaaan. ALLAH tmhain hazar khushiyan dy. May you live a long and a happy life meri jaaan.";
-  const typingElem = document.querySelector(".typing");
-  let index = 0;
+const fullMessage = "Tum meri zindagi, mera sukoon, mera sab kuch ho. I can't wait to get married to you. Meri intahaayat, meri duniya, mera pyaara sa bacha. I love you so muchhhhhhhhhhhhhhhhh 💕. Seriously I can't wait to get married to you mera bachaaaa. Happy birthday meri jaaan. ALLAH tmhain hazar khushiyan dy. May you live a long and a happy life meri jaaan.";
+const typingElem = document.querySelector(".typing");
+let index = 0;
 
-  function typeWish() {
-    if (index < fullMessage.length) {
-      typingElem.innerHTML += fullMessage.charAt(index);
-      index++;
-      setTimeout(typeWish, 50);
+function typeWish() {
+  if (index < fullMessage.length) {
+    typingElem.innerHTML += fullMessage.charAt(index);
+    index++;
+    setTimeout(typeWish, 50);
+  }
+}
+
+function playTransition(targetId) {
+  const audio = document.getElementById('bg-music');
+  audio.volume = 1;
+  audio.play();
+
+  const roseInterval = setInterval(() => {
+    const rose = document.createElement('div');
+    rose.className = 'rose';
+    rose.style.left = Math.random() * window.innerWidth + 'px';
+    rose.style.animationDuration = (6 + Math.random() * 4) + 's';
+    document.body.appendChild(rose);
+    setTimeout(() => rose.remove(), 10000);
+  }, 100);
+
+  setTimeout(() => {
+    clearInterval(roseInterval);
+    showSection(targetId);
+  }, 2000);
+}
+
+function showSection(id) {
+  document.querySelectorAll('.content').forEach(div => div.classList.remove('visible'));
+  document.getElementById(id).classList.add('visible');
+  if (id === 'wish') {
+    index = 0;
+    typingElem.innerHTML = '';
+    typeWish();
+  }
+}
+
+let score = 0;
+function increaseScore() {
+  score++;
+  document.getElementById('score').textContent = score;
+}
+
+function revealGift() {
+  document.getElementById('gift-text').innerText = "🌟 Surprise! Your gift is my forever love, my loyalty, and my heart. 🏱❤️";
+  document.getElementById('gift-img').style.display = 'block';
+}
+
+let fireworksInstance = null;
+function startFireworks() {
+  const container = document.getElementById('fireworks-container');
+  if (!container) return;
+  if (fireworksInstance) return;
+
+  fireworksInstance = new Fireworks.default(container, {
+    rocketsPoint: 50,
+    hue: { min: 0, max: 360 },
+    delay: { min: 15, max: 30 },
+    speed: 2,
+    acceleration: 1.05,
+    friction: 0.97,
+    gravity: 1.5,
+    particles: 100,
+    trace: 3,
+    explosion: 5,
+    autoresize: true,
+    brightness: { min: 50, max: 80 },
+    sound: {
+      enabled: true,
+      files: ['https://www.fesliyanstudios.com/play-mp3/387'],
+      volume: 1
     }
-  }
+  });
 
-  function playTransition(targetId) {
-    const audio = document.getElementById('bg-music');
-    audio.volume = 1;
-    audio.play();
+  fireworksInstance.start();
 
-    const roseInterval = setInterval(() => {
-      const rose = document.createElement('div');
-      rose.className = 'rose';
-      rose.style.left = Math.random() * window.innerWidth + 'px';
-      rose.style.animationDuration = (6 + Math.random() * 4) + 's';
-      rose.style.transform = `scale(${0.5 + Math.random()}) rotate(${Math.random() * 360}deg)`;
-      document.body.appendChild(rose);
-      setTimeout(() => rose.remove(), 10000);
-    }, 100);
-
-    document.querySelectorAll('.content').forEach(div => {
-      div.classList.remove('visible');
-    });
-
-    setTimeout(() => {
-      clearInterval(roseInterval);
-      const target = document.getElementById(targetId);
-      target.classList.add('visible');
-      if (targetId === 'wish') {
-        index = 0;
-        typingElem.innerHTML = '';
-        typeWish();
-      }
-    }, 2000);
-  }
-
-  let score = 0;
-  function increaseScore() {
-    score++;
-    document.getElementById('score').textContent = score;
-  }
-
-  function revealGift() {
-    document.getElementById('gift-text').innerText = "🌟 Surprise! Your gift is my forever love, my loyalty, and my heart. 🏱❤️";
-    document.getElementById('gift-img').style.display = 'block';
-  }
-
-  let fireworksInstance = null;
-  function startFireworks() {
-    const container = document.getElementById('fireworks-container');
-    if (!container) return;
-    if (fireworksInstance) return;
-
-    fireworksInstance = new Fireworks.default(container, {
-      hue: { min: 0, max: 360 },
-      delay: { min: 15, max: 30 },
-      speed: 2,
-      acceleration: 1.05,
-      friction: 0.97,
-      gravity: 1.5,
-      particles: 100,
-      trace: 3,
-      explosion: 5,
-      autoresize: true,
-      brightness: { min: 50, max: 80 },
-      sound: {
-        enabled: true,
-        files: ['https://www.fesliyanstudios.com/play-mp3/387'],
-        volume: 1
-      }
-    });
-
-    fireworksInstance.start();
-
-    setTimeout(() => {
-      if (fireworksInstance) {
-        fireworksInstance.stop();
-        fireworksInstance = null;
-      }
-    }, 10000);
-  }
-
-  // Generate heart sparkles endlessly
-  setInterval(() => {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.style.left = Math.random() * window.innerWidth + 'px';
-    heart.style.bottom = '-20px';
-    heart.style.animationDuration = (5 + Math.random() * 3) + 's';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 8000);
-  }, 500);
+  setTimeout(() => {
+    if (fireworksInstance) {
+      fireworksInstance.stop();
+      fireworksInstance = null;
+    }
+  }, 10000);
+}
 </script>
 </body>
 </html>
