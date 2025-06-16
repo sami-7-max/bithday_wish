@@ -116,8 +116,18 @@
 
   <div id="wish" class="section">Tum meri zindagi, mera sukoon, mera sab kuch ho. I love you ❤️</div>
   <div id="game" class="section">Romantic score game will be here soon 😘</div>
-  <div id="questions" class="section">Romantic questions to make us even closer 💑</div>
-  <div id="gift" class="section">Your surprise gift is loading... 🎉</div>
+  <div id="questions" class="section">
+    <ul style="list-style: none; padding: 0;">
+      <li>❤️ What's your favorite memory of us?</li>
+      <li>💋 If we could go anywhere together, where would it be?</li>
+      <li>🌹 What do you love most about our relationship?</li>
+      <li>🎶 A song that reminds you of us?</li>
+      <li>💑 One thing you want us to do together this year?</li>
+    </ul>
+  </div>
+  <div id="gift" class="section">
+    🎉 Here's your surprise: You are getting a romantic dinner plan, a photo collage gift, and a day full of love notes hidden around your favorite places. 💝
+  </div>
 
   <audio autoplay loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -139,7 +149,6 @@
       }
     }
 
-    // Fireworks effect using emojis
     function fireworks() {
       for (let i = 0; i < 30; i++) {
         const heart = document.createElement('div');
@@ -152,7 +161,6 @@
       }
     }
 
-    // Starry night background
     for (let i = 0; i < 150; i++) {
       const star = document.createElement('div');
       star.className = 'star';
