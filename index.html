@@ -1,178 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday, Momina 💖</title>
-  <style>
-    body {
-      margin: 0;
-      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
-      color: white;
-    }
+<meta charset="UTF-8">
+<title>Happy Birthday, Momina 💖</title>
+<style>
+body {
+margin: 0;
+background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+overflow: hidden;
+font-family: 'Segoe UI', sans-serif;
+color: white;
+}
 
-    h1 {
-      text-align: center;
-      font-size: 3em;
-      margin: 30px 0 10px;
-      color: #ff69b4;
-      text-shadow: 0 0 20px #ff69b4;
-    }
+h1 {
+text-align: center;
+font-size: 3em;
+margin: 30px 0 10px;
+color: #ff69b4;
+text-shadow: 0 0 20px #ff69b4;
+}
 
-    .menu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-    }
+.menu {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 30px;
+}
 
-    .menu button {
-      background-color: white;
-      color: hotpink;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 40px;
-      padding: 15px 40px;
-      margin: 10px;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 0 10px hotpink;
-    }
+.menu button {
+background-color: white;
+color: hotpink;
+font-size: 1.2em;
+border: none;
+border-radius: 40px;
+padding: 15px 40px;
+margin: 10px;
+cursor: pointer;
+transition: transform 0.3s, background 0.3s;
+display: flex;
+align-items: center;
+gap: 10px;
+box-shadow: 0 0 10px hotpink;
+}
 
-    .menu button:hover {
-      transform: scale(1.1);
-      background-color: #ffe6f0;
-    }
+.menu button:hover {
+transform: scale(1.1);
+background-color: #ffe6f0;
+}
 
-    .section {
-      display: none;
-      text-align: center;
-      font-size: 1.5em;
-      padding: 20px;
-      animation: fadeIn 1s ease-in-out;
-    }
+.section {
+display: none;
+text-align: center;
+font-size: 1.5em;
+padding: 20px;
+animation: fadeIn 1s ease-in-out;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+@keyframes fadeIn {
+from { opacity: 0; transform: scale(0.95); }
+to { opacity: 1; transform: scale(1); }
+}
 
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 2s infinite;
-    }
+.star {
+position: absolute;
+width: 2px;
+height: 2px;
+background: white;
+border-radius: 50%;
+animation: twinkle 2s infinite;
+}
 
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
-    }
+@keyframes twinkle {
+0%, 100% { opacity: 0.2; }
+50% { opacity: 1; }
+}
 
-    .rose {
-      position: fixed;
-      font-size: 2rem;
-      animation: fall 8s linear;
-      top: -100px;
-      pointer-events: none;
-      z-index: 999;
-    }
+.rose {
+position: fixed;
+font-size: 2rem;
+animation: fall 8s linear;
+top: -100px;
+pointer-events: none;
+z-index: 999;
+}
 
-    @keyframes fall {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(120vh) rotate(360deg); }
-    }
+@keyframes fall {
+0% { transform: translateY(0); }
+100% { transform: translateY(120vh) rotate(360deg); }
+}
 
-    .heart {
-      position: absolute;
-      font-size: 1.2em;
-      color: pink;
-      animation: float 4s ease-in-out infinite;
-      pointer-events: none;
-    }
+.heart {
+position: absolute;
+font-size: 1.2em;
+color: pink;
+animation: float 4s ease-in-out infinite;
+pointer-events: none;
+}
 
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-100px); opacity: 0; }
-    }
-  </style>
+@keyframes float {
+0% { transform: translateY(0); opacity: 1; }
+100% { transform: translateY(-100px); opacity: 0; }
+}
+</style>
 </head>
 <body>
-  <h1>🎂 Happy Birthday, Momina 💛</h1>
+<h1>🎂 Happy Birthday, Momina 💛</h1>
 
-  <div class="menu">
-    <button onclick="showSection('wish')">💌 Read Your Wish</button>
-    <button onclick="showSection('game')">🎯 Score Game</button>
-    <button onclick="showSection('questions')">🧠 Romantic Questions</button>
-    <button onclick="showSection('gift')">🏱 Surprise Gift</button>
-    <button onclick="fireworks()">🎇 Fireworks</button>
-  </div>
+<div class="menu">
+<button onclick="showSection('wish')">💌 Read Your Wish</button>
+<button onclick="showSection('game')">🎯 Score Game</button>
+<button onclick="showSection('questions')">🧠 Romantic Questions</button>
+<button onclick="showSection('gift')">🏱 Surprise Gift</button>
+<button onclick="fireworks()">🎇 Fireworks</button>
+</div>
 
-  <div id="wish" class="section">happy birthday my little baby🍰♡ ༘*.ﾟ🧸🎀.happy birthday to the girl i have known for so long the most beautiful the most loving,caring girl i know and i am glad to tell everyone that she is my wife.happy birthday mominaaaaaaaaa 🎉🎂🎀💗🥳.ALLAH MERI JAAAN KO LAMBI ZINDGI DY ALLAH MERI JAAN KO HAMESHA KHUSH RKHY MY BABY ILOVEYOU SO MUCH.THE WAS I HOPE THE LAST BIRTHDAY OF YOURS INSHALLAH NEXT BIRTHDAY WE WILL CELEBRATE TOGERTHER I WILL BE DONE WITH MY GRADUATION AND WILL BE THERE INSHALLAH.Tum meri zindagi, mera sukoon, mera sab kuch ho. I love you.AND ONCE AGAIN HAPPY BIRTHDAY MELA BACHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA₊˚⊹♡🍰🍓♡⊹˚₊ ❤️</div>
+<div id="wish" class="section">
+happy birthday my little baby🍰♡ ༘*.ﾟ🧸🎀.happy birthday to the girl i have known for so long the most beautiful the most loving,caring girl i know and i am glad to tell everyone that she is my wife.happy birthday mominaaaaaaaaa 🎉🎂🎀💗🥳.ALLAH MERI JAAAN KO LAMBI ZINDGI DY ALLAH MERI JAAN KO HAMESHA KHUSH RKHY MY BABY ILOVEYOU SO MUCH.THE WAS I HOPE THE LAST BIRTHDAY OF YOURS INSHALLAH NEXT BIRTHDAY WE WILL CELEBRATE TOGERTHER I WILL BE DONE WITH MY GRADUATION AND WILL BE THERE INSHALLAH.Tum meri zindagi, mera sukoon, mera sab kuch ho. I love you.AND ONCE AGAIN HAPPY BIRTHDAY MELA BACHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA₊˚⊹♡🍰🍓♡⊹˚₊ ❤️
+</div>
 
-  <div id="game" class="section">
-    ✨ Let's play a fun game soon! Your love score is rising every second we're together. 😘
-  </div>
+<div id="game" class="section">
+<canvas id="flappyCanvas" width="320" height="480" style="background: skyblue; border: 2px solid white;"></canvas>
+<script>
+const canvas = document.getElementById("flappyCanvas");
+const ctx = canvas.getContext("2d");
 
-  <div id="questions" class="section">
-    <ul style="list-style: none; padding: 0;">
-      <li>❤️ What's your favorite memory of us?</li>
-      <li>💋 If we could go anywhere together, where would it be?</li>
-      <li>🌹 What do you love most about our relationship?</li>
-      <li>🎶 A song that reminds you of us?</li>
-      <li>💑 One thing you want us to do together this year?</li>
-    </ul>
-  </div>
+let bird = { x: 50, y: 150, width: 20, height: 20, gravity: 1.5, lift: -15, velocity: 0 };
+let pipes = [];
+let score = 0;
+let gameOver = false;
+let started = false;
+let roseTriggered = false;
 
-  <div id="gift" class="section">
-    🎉 Here's your surprise: your gift is my forever love,loyalty and care for you my baby mela bachaa ilobeyou so muchhhhhhhhh .I ASKED JAVERIA TO GIVE YOU A NICE RED BIG BOUTIQUE OF RED ROSES .AND I PROMISE MERI JAAAN WHEN YOU WILL BE IN PAKISTAN I WILL ARRANGE YOUR BITHDAY WE GONNA CHILL TOGETHER HAVE SO MUCH FUN TOGETHER .ABI TO DOOSRON KO BOLNA PRTA HAI I WILL ARRANGE A SURPRISE GIFT AN ACTUAL GIFT FOR YOU I PROMISE💕
-  </div>
+document.addEventListener("click", () => {
+if (!started) {
+started = true;
+resetGame();
+return;
+}
+if (!gameOver) {
+bird.velocity = bird.lift;
+} else {
+resetGame();
+}
+});
 
-  <audio autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  </audio>
+function resetGame() {
+bird.y = 150;
+bird.velocity = 0;
+pipes = [];
+score = 0;
+gameOver = false;
+roseTriggered = false;
+for (let i = 0; i < 3; i++) {
+pipes.push({ x: 320 + i * 200, height: Math.floor(Math.random() * 200 + 50) });
+}
+}
 
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
-      const section = document.getElementById(id);
-      section.style.display = 'block';
-      for (let i = 0; i < 20; i++) {
-        const rose = document.createElement('div');
-        rose.className = 'rose';
-        rose.innerText = '🌹';
-        rose.style.left = Math.random() * window.innerWidth + 'px';
-        rose.style.animationDuration = (6 + Math.random() * 4) + 's';
-        document.body.appendChild(rose);
-        setTimeout(() => rose.remove(), 10000);
-      }
-    }
+function drawBird() {
+ctx.fillStyle = "yellow";
+ctx.beginPath();
+ctx.arc(bird.x, bird.y, bird.width / 2, 0, Math.PI * 2);
+ctx.fill();
+}
 
-    function fireworks() {
-      for (let i = 0; i < 30; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerText = '💖';
-        heart.style.left = Math.random() * window.innerWidth + 'px';
-        heart.style.top = Math.random() * window.innerHeight + 'px';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-      }
-    }
+function drawPipes() {
+ctx.fillStyle = "green";
+pipes.forEach(pipe => {
+ctx.fillRect(pipe.x, 0, 40, pipe.height);
+ctx.fillRect(pipe.x, pipe.height + 100, 40, canvas.height);
+});
+}
 
-    for (let i = 0; i < 150; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.top = Math.random() * window.innerHeight + 'px';
-      star.style.left = Math.random() * window.innerWidth + 'px';
-      document.body.appendChild(star);
-    }
-  </script>
+function drawScore() {
+ctx.fillStyle = "white";
+ctx.font = "24px sans-serif";
+ctx.fillText("Score: " + score, 10, 30);
+}
+
+function gameLoop() {
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+if (started) {
+bird.velocity += bird.gravity;
+bird.y += bird.velocity;
+
+pipes.forEach(pipe => pipe.x -= 2);
+
+if (pipes[0].x < -40) {
+pipes.shift();
+pipes.push({ x: 320, height: Math.floor(Math.random() * 200 + 50) });
+score++;
+if (score === 10 && !roseTriggered) {
+triggerRoseRain();
+roseTriggered = true;
+}
+}
+
+pipes.forEach(pipe => {
+if (
+bird.x + bird.width > pipe.x &&
+bird.x < pipe.x + 40 &&
+(bird.y < pipe.height || bird.y > pipe.height + 100)
+) {
+gameOver = true;
+}
+});
+
+if (bird.y + bird.height > canvas.height || bird.y < 0) {
+gameOver = true;
+}
+
+drawPipes();
+drawBird();
+drawScore();
+
+if (gameOver) {
+ctx.fillStyle = "red";
+ctx.font = "30px sans-serif";
+ctx.fillText("Game Over", 80, 240);
+ctx.font = "16px sans-serif";
+ctx.fillText("Click to Restart", 100, 270);
+}
+} else {
+ctx.fillStyle = "white";
+ctx.font = "24px sans-serif";
+ctx.fillText("Click to Start!", 100, 230);
+}
+requestAnimationFrame(gameLoop);
+}
+
+function triggerRoseRain() {
+for (let i = 0; i < 30; i++) {
+const rose = document.createElement('div');
+rose.className = 'rose';
+rose.innerText = '🌹';
+rose.style.left = Math.random() * window.innerWidth + 'px';
+rose.style.animationDuration = (6 + Math.random() * 4) + 's';
+document.body.appendChild(rose);
+setTimeout(() => rose.remove(), 10000);
+}
+}
+
+resetGame();
+gameLoop();
+</script>
+</div>
+
+<div id="questions" class="section">
+<ul style="list-style: none; padding: 0;">
+<li>❤️ What's your favorite memory of us?</li>
+<li>💋 If we could go anywhere together, where would it be?</li>
+<li>🌹 What do you love most about our relationship?</li>
+<li>🎶 A song that reminds you of us?</li>
+<li>💑 One thing you want us to do together this year?</li>
+</ul>
+</div>
+
+<div id="gift" class="section">
+🎉 Here's your surprise: your gift is my forever love,loyalty and care for you my baby mela bachaa ilobeyou so muchhhhhhhhh .I ASKED JAVERIA TO GIVE YOU A NICE RED BIG BOUTIQUE OF RED ROSES .AND I PROMISE MERI JAAAN WHEN YOU WILL BE IN PAKISTAN I WILL ARRANGE YOUR BITHDAY WE GONNA CHILL TOGETHER HAVE SO MUCH FUN TOGETHER .ABI TO DOOSRON KO BOLNA PRTA HAI I WILL ARRANGE A SURPRISE GIFT AN ACTUAL GIFT FOR YOU I PROMISE💕
+</div>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function showSection(id) {
+document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+const section = document.getElementById(id);
+section.style.display = 'block';
+for (let i = 0; i < 20; i++) {
+const rose = document.createElement('div');
+rose.className = 'rose';
+rose.innerText = '🌹';
+rose.style.left = Math.random() * window.innerWidth + 'px';
+rose.style.animationDuration = (6 + Math.random() * 4) + 's';
+document.body.appendChild(rose);
+setTimeout(() => rose.remove(), 10000);
+}
+}
+
+function fireworks() {
+for (let i = 0; i < 30; i++) {
+const heart = document.createElement('div');
+heart.className = 'heart';
+heart.innerText = '💖';
+heart.style.left = Math.random() * window.innerWidth + 'px';
+heart.style.top = Math.random() * window.innerHeight + 'px';
+document.body.appendChild(heart);
+setTimeout(() => heart.remove(), 4000);
+}
+}
+
+for (let i = 0; i < 150; i++) {
+const star = document.createElement('div');
+star.className = 'star';
+star.style.top = Math.random() * window.innerHeight + 'px';
+star.style.left = Math.random() * window.innerWidth + 'px';
+document.body.appendChild(star);
+}
+</script>
 </body>
 </html>
